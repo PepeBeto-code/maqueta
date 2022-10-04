@@ -24,9 +24,10 @@ class BackRequest extends FormRequest
     public function rules()
     {
         return [
-             'username' => 'required|min:5',
-             'phone' => 'required|min:10',
-             'email' => 'required|email|unique:forms',
+             'username' => 'required',  
+             'email' => 'required|email|unique:register',       
+             'password' => 'required|min:5',       
+     
         ];
     }
 
@@ -36,14 +37,12 @@ class BackRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'username.required' => 'El campo nombre es requerido.',
-            'username.min' => 'El campo nombre debe tener como minimo 5 caracteres.',
-            'phone.required' => 'Se requiere de un telefono.',
-            'phone.min' => 'El telefono debe tener como minimo 10 caracteres.',
-            'email.required' => 'Se requiere de un correo electronico.',
-            'email.email' => 'Se requiere de un correo electronico valido.',
-            'email.unique' => 'El correo electronico introducido ya esta en uso..',
-
+            'username.required' => 'El usuario es requerido.',
+            'email.required' => 'El Correo es requerido.',
+            'password.required' => 'El password es requerido.',
+            'password.min' => 'La contraseña debe tener alemnos 5 caracteres.',
+            'email.email' => 'El email no es valido.',
+            'email.unique' => 'El email ya existe',
         ];
     }
 }
